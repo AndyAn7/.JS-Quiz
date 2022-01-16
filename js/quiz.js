@@ -5,3 +5,27 @@
  * then, add some of your own questions!
  * Use this data to populate your quiz questions, choices, and answers.
  */
+
+// Timer
+var timerDiv = document.querySelector('.timer');
+var timer;
+
+function timerF() {
+    var sec = 60;
+    clearInterval(timer);
+    timer = setInterval(function(){
+        sec--;
+        console.log(sec);
+        timerDiv.textContent ='00:'+sec;
+
+        if (sec < 0) {
+            clearInterval(timer);
+        }
+    }, 1000);
+}
+const startBtn = document.querySelector('#start');
+
+startBtn.addEventListener('click',() => {
+    timerF();
+});
+

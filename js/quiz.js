@@ -13,10 +13,10 @@ var trivia = document.querySelector('.questions');
 var solutionList = document.querySelector('.solutions');
 var timerDiv = document.querySelector('.timer');
 var pScore = document.querySelector('.score');
-
 var timer;
 var sec = 5;
 
+// Timer function
 function timerF() {
     clearInterval(timer);
     timer = setInterval(function(){
@@ -35,6 +35,7 @@ startBtn.addEventListener('click',() => {
     timerF();
 });
 
+// Questions display
 function displayTrivia(i) {
     var trivia = document.querySelector('.questions');
 
@@ -64,6 +65,7 @@ startBtn.addEventListener('click',() => {
     displayTrivia(0);
 });
 
+// Check solution chosen by user
 function checkSol(i) {
     var playerChoice = questions[questionNumber].choices[i];
     var pSol = questions[questionNumber].answer;

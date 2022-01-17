@@ -8,11 +8,12 @@
 
 
 var questionNumber = 0;
-// Questions
+var gameContainer = document.querySelector('.game');
 var trivia = document.querySelector('.questions');
 var solutionList = document.querySelector('.solutions');
-// Timer
 var timerDiv = document.querySelector('.timer');
+var pScore = document.querySelector('.score');
+
 var timer;
 var sec = 5;
 

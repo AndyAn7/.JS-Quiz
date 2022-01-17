@@ -6,19 +6,24 @@
  * Use this data to populate your quiz questions, choices, and answers.
  */
 
+
+var questionNumber = 0;
+// Questions
+var trivia = document.querySelector('.questions');
+var solutionList = document.querySelector('.solutions');
 // Timer
 var timerDiv = document.querySelector('.timer');
 var timer;
+var sec = 5;
 
 function timerF() {
-    var sec = 60;
     clearInterval(timer);
     timer = setInterval(function(){
         sec--;
-        console.log(sec);
-        timerDiv.textContent ='00:'+sec;
+        // console.log(sec);
+        timerDiv.textContent = ":" + sec;
 
-        if (sec < 0) {
+        if (sec <= 0) {
             clearInterval(timer);
         }
     }, 1000);
@@ -29,3 +34,41 @@ startBtn.addEventListener('click',() => {
     timerF();
 });
 
+function displayTrivia(i) {
+    var trivia = document.querySelector('.questions');
+
+    let triviaNew = '<span>'+ questions[i].title +'</span>';
+    let solutionNew = '<button id="one">'+ questions[i].choices[0] +'</button>'+ 
+    '<button id="two">'+ questions[i].choices[1] +'</button>'+ 
+    '<button id="three">'+ questions[i].choices[2] +'</button>'+ 
+    '<button id="four">'+ questions[i].choices[3] +'</button>'
+
+    trivia.innerHTML = triviaNew;
+    solutionList.innerHTML = solutionNew;
+}
+
+one.addEventListener('click', () => {
+    checkSol(0);
+});
+two.addEventListener('click', () => {
+    checkSol(1);
+});
+three.addEventListener('click', () => {
+    checkSol(2);
+});
+four.addEventListener('click', () => {
+    checkSol(3);
+});
+startBtn.addEventListener('click',() => {
+    displayTrivia(0);
+});
+
+function checkSol(i) {
+    var playerChoice = questions[questionNumber].choices[i];
+    var pSol = questions[questionNumber].answer;
+
+    if (playerChoice != pSol) {
+        
+    }
+
+}

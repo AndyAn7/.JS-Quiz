@@ -37,11 +37,11 @@ startBtn.addEventListener('click',() => {
 function displayTrivia(i) {
     var trivia = document.querySelector('.questions');
 
-    let triviaNew = '<span>'+ questions[i].title +'</span>';
-    let solutionNew = '<button id="one">'+ questions[i].choices[0] +'</button>'+ 
-    '<button id="two">'+ questions[i].choices[1] +'</button>'+ 
-    '<button id="three">'+ questions[i].choices[2] +'</button>'+ 
-    '<button id="four">'+ questions[i].choices[3] +'</button>'
+    let triviaNew = '<span>'+ questions[i].title + '</span>';
+    let solutionNew = '<button id="one">'+ questions[i].choices[0] +'</button>' + 
+    '<button id="two">' + questions[i].choices[1] + '</button>' + 
+    '<button id="three">' + questions[i].choices[2] + '</button>' + 
+    '<button id="four">' + questions[i].choices[3] + '</button>'
 
     trivia.innerHTML = triviaNew;
     solutionList.innerHTML = solutionNew;

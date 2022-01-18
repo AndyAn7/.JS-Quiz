@@ -3,76 +3,17 @@ var questionNumber = 0;
 var gameContainer = document.querySelector('.game');
 var trivia = document.querySelector('.questions');
 var solutionList = document.querySelector('.solutions');
+var solutionIndex = 0;
 var timerDiv = document.querySelector('.timer');
 var pScore = document.querySelector('.score');
 var button1 = document.querySelector('#one');
 var button2 = document.querySelector('#two');
 var button3 = document.querySelector('#three');
 var button4 = document.querySelector('#four');
-var POINTS = 5
-var mQuest = 5
-
-let currentQ = {}
-let acceptA = true
-let score = 0
-let qCount = 0
-let questionsLeft = []
+var score = 0;
 var timer;
-var sec = 5;
+var sec = 60;
 
-// startGame = () => {
-//     qCount = 0
-//     score = 0
-//     questionsLeft = [...questions]
-//     getNewQ()
-// }
-
-// getNewQ = () => {
-//     if (questionsLeft == 0 || qCount > MAX_QUESTIONS) {
-//         localStorage.setItem('mostRecentScore', score)
-
-//         return window.location.assign('/end.html')
-//     }
-
-//     qCount++
-//     trivia.innerText = 'Question ${qCount} of ${MAX-QUESTIONS}'
-
-//     const qIndex = Math.floor(Math.random() * questionsLeft.length)
-//     currentQ = questionsLeft[questions]
-//     questions.innerText = currentQ.question
-
-//     choices.forEach(choice => {
-//         const number = choice.dataset['number']
-//         choice.innerText = currentQ['choice' + number]
-//     })
-
-//     questionsLeft.splice(questionsIndex, 1)
-
-//     acceptA = true
-// }
-
-// choices.forEach(choice => {
-//     choice.addEventListener('click', e => {
-//         if(!acceptA) return
-
-//         acceptA = false
-//         const selectedChoice = e.target
-//         const selectedAnswer = selectedChoice.dataset['number']
-
-//         let classToApply = selectedAnswer == currentQ.answer ? 'correct' : 'incorrect'
-
-//         if(classToApply === 'correct') {
-//             incrementScore(POINTS)
-//         }
-
-//         selectedChoice.parentElement.classList.add(classToApply)
-
-//         setTimeout(() =>{
-//             selectedChoice.parentElement.classList.remove(classToApply)
-//             getNewQ()
-//         }, 1000)
-//     })
-// })
 // Timer function
 function timerF() {
     clearInterval(timer);
@@ -102,9 +43,7 @@ function displayTrivia(i) {
     button3.textContent = questions[i].choices[2];
     button4.textContent = questions[i].choices[3];
 
-
     trivia.innerHTML = triviaNew;
-    solutionList.innerHTML = solutionNew;
 }
 
 button1.addEventListener('click', () => {
@@ -125,12 +64,23 @@ startBtn.addEventListener('click',() => {
 
 
 // Check solution chosen by user
-function checkSol(i) {
-    var playerChoice = questions[questionNumber].choices[i];
+function checkSol(qns) {
+    var playerChoice = questions[questionNumber].choices[qns];
     var pSol = questions[questionNumber].answer;
 
-    if (playerChoice != pSol) {
+    for(var i=0; i < questions.length; i++)
+
+    if (playerChoice == pSol) {
         
+        score++;
+
+    } else {
+        score--;
+        sec-=2;
+    } 
+    questionNumber++;
+    if (questionNumber < questions.length) {
+        displayTrivia(questionNumber);
     }
 
 }

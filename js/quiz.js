@@ -103,6 +103,7 @@ startBtn.addEventListener('click',() => {
 
     timerF();
     displayTrivia(questionNumber);
+    trivia.classList.remove('hide')
 });
 
 // eventListeners
@@ -134,4 +135,8 @@ function endQuiz() {
     hiScore.sort((a, b) => b.score - a.score)
     localStorage.setItem('highScores', JSON.stringify(hiScore))
     alert('Your name has been submitted!');
+}
+
+function sortHi() {
+    hiScore
 }

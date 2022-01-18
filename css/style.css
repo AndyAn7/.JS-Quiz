@@ -15,6 +15,7 @@ article {
     text-align: center;
     margin-left: 50px;
 }
+
 /* Header alignment */
 header {
     text-align: center;
@@ -53,6 +54,15 @@ p {
 /* Button styling */
 button {
     margin: 5px;
+}
+
+.hiScore {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.userHiScore {
+    text-align: center;
 }
 
 .startend {

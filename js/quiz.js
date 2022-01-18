@@ -107,4 +107,34 @@ button3.addEventListener('click', () => {
 });
 button4.addEventListener('click', () => {
     checkSol(3);
+<<<<<<< HEAD
 });
+=======
+});
+startBtn.addEventListener('click',() => {
+    displayTrivia(0);
+});
+
+
+// Check solution chosen by user
+function checkSol(qns) {
+    var playerChoice = questions[questionNumber].choices[qns];
+    var pSol = questions[questionNumber].answer;
+
+    for(var i=0; i < questions.length; i++)
+
+    if (playerChoice == pSol) {
+        
+        score++;
+
+    } else {
+        score--;
+        sec-=2;
+    } 
+    questionNumber++;
+    if (questionNumber < questions.length) {
+        displayTrivia(questionNumber);
+    }
+
+}
+>>>>>>> 27184518748a2792208ea9d224b8613a893e9d26

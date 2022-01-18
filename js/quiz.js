@@ -15,8 +15,8 @@ var solutionIndex = 0;
 var questionNumber = 0;
 var score = 0;
 var timer;
-var sec = 60;
-let userscore =0;
+var sec;
+let userscore = 0;
 
 // Timer function
 function timerF() {
@@ -24,7 +24,7 @@ function timerF() {
     timer = setInterval(function(){
         sec--;
         // console.log(sec);
-        timerDiv.textContent = "Left time:" + sec;
+        timerDiv.textContent = "Time:" + sec;
 
         if (sec <= 0) {
             clearInterval(timer);
@@ -50,7 +50,6 @@ function displayTrivia(i) {
 function checkSol(qns) {
     var playerChoice = questions[questionNumber].choices[qns];
     var pSol = questions[questionNumber].answer;
-    // for(var i=0; i < questions.length; i++) //we don't need it here
 
     if (playerChoice === pSol) {
         
@@ -59,19 +58,21 @@ function checkSol(qns) {
 
     } else {
         score--;
-        sec-=1;
+        sec-=10;
+        score-=1;
     } 
 
-    if (questionNumber >= questions.length -1) {
+    if (questionNumber >= questions.length - 1) {
         endGame()
     }
     questionNumber++
     displayTrivia(questionNumber)
 }
 
+// endGame function
 function endGame(){
     questionNumber = 0
-    sec=1 // 0 will be -1, so 1 will be 0 second
+    sec = 1
     solutionList.classList.add('hide')
 
     startBtn.classList.remove('hide')
@@ -80,6 +81,7 @@ function endGame(){
     startBtn.innerText = 'Restart'
 }
 
+// Start button
 startBtn.addEventListener('click',() => {
     questionNumber = 0
     sec = 60
@@ -93,7 +95,7 @@ startBtn.addEventListener('click',() => {
     displayTrivia(questionNumber);
 });
 
-// put eventlisten on the buttom
+// eventListeners
 endBtn.addEventListener('click', endGame)
 
 button1.addEventListener('click', () => {

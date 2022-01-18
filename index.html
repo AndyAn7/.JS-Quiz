@@ -13,13 +13,13 @@
 
     <main class="game">
 
-        <container class="welcome">
+        <article class="welcome">
             <p>Welcome to .JS Code Quiz!<br>
                 You have 60 seconds to complete a set of multiple choice questions.<br>
                 If you answer incorrectly a 10 second deduction to your time will occur along with a point deduction.<br>
                 Good luck!
             </p>
-        </container>
+        </article>
         
         <!-- Header -->
         <header>
@@ -28,8 +28,8 @@
 
         <!-- Timer and Score -->
         <section class="timescore">
-            <p class="timer"></p>
-            <p class="score" id="score"></p>
+            <p class="timer">Time:</p>
+            <p class="score" id="score">Score:</p>
         </section>
         
         <hr>
@@ -55,12 +55,13 @@
             <button id="end" class="hide">End</button>
         </section>
 
-        <section class="hiScore hide">High Score</section>
+        <section class="hiScore hide"><b>High Score</b></section>
         <!-- <section class ="pName"></section> -->
 
         <!-- High score -->
-        <section class="userHiScore hide">Write your name:<input class="user"></input>
+        <section class="userHiScore hide">Name:<input class="user"></input>
         <button class="sub">Submit</button>
+
     </main>
         
         <!-- Script files -->

@@ -85,6 +85,7 @@ function endGame(){
     startBtn.innerText = 'Restart'
     pHighScore.classList.remove('hide')
     textHiScore.classList.remove('hide')
+    trivia.classList.add('hide')
 }
 
 // Start button
@@ -97,7 +98,6 @@ startBtn.addEventListener('click',() => {
     endBtn.classList.remove('hide')
     startBtn.classList.add('hide')
     container.classList.add('hide')
-
     pHighScore.classList.add('hide')
     textHiScore.classList.add('hide')
 
@@ -120,8 +120,6 @@ button3.addEventListener('click', () => {
 button4.addEventListener('click', () => {
     checkSol(3);
 });
-
-subBtn.addEventListener('click', saveScore);
 
 var hiScore = JSON.parse(localStorage.getItem('hiScore')) || [];
 

@@ -53,3 +53,7 @@ button {
 .startend {
     text-align: center;
 }
+
+.hide {
+    display: none;
+}

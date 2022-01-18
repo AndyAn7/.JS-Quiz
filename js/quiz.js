@@ -8,8 +8,13 @@ var button1 = document.querySelector('#one');
 var button2 = document.querySelector('#two');
 var button3 = document.querySelector('#three');
 var button4 = document.querySelector('#four');
+var subBtn = document.querySelector('.sub');
+var container = document.querySelector('.welcome');
+var pHighScore = document.querySelector('.hiScore');
+var textHiScore = document.querySelector('.userHiScore');
 const startBtn = document.querySelector('#start');
-const endBtn = document.querySelector('#end')
+const endBtn = document.querySelector('#end');
+
 
 var solutionIndex = 0;
 var questionNumber = 0;
@@ -58,8 +63,8 @@ function checkSol(qns) {
 
     } else {
         score--;
-        sec-=10;
-        score-=1;
+        sec -= 10;
+        score -= 1;
     } 
 
     if (questionNumber >= questions.length - 1) {
@@ -73,12 +78,13 @@ function checkSol(qns) {
 function endGame(){
     questionNumber = 0
     sec = 1
+    
     solutionList.classList.add('hide')
-
     startBtn.classList.remove('hide')
     endBtn.classList.add('hide')
-
     startBtn.innerText = 'Restart'
+    pHighScore.classList.remove('hide')
+    textHiScore.classList.remove('hide')
 }
 
 // Start button
@@ -90,6 +96,10 @@ startBtn.addEventListener('click',() => {
     solutionList.classList.remove('hide')
     endBtn.classList.remove('hide')
     startBtn.classList.add('hide')
+    container.classList.add('hide')
+
+    pHighScore.classList.add('hide')
+    textHiScore.classList.add('hide')
 
     timerF();
     displayTrivia(questionNumber);
@@ -110,3 +120,20 @@ button3.addEventListener('click', () => {
 button4.addEventListener('click', () => {
     checkSol(3);
 });
+
+subBtn.addEventListener('click', saveScore);
+
+var hiScore = JSON.parse(localStorage.getItem('hiScore')) || [];
+
+function endQuiz() {
+    var plyrName = textHiScore.value
+    let plyrScoreObj = {
+        score: hiScore,
+        name: plyrName
+    }
+
+    hiScore.push(plyrScoreObj)
+    hiScore.sort((a, b) => b.score - a.score)
+    localStorage.setItem('highScores', JSON.stringify(hiScore))
+    alert('Your name has been submitted!');
+}

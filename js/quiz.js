@@ -14,6 +14,7 @@ var pHighScore = document.querySelector('.hiScore');
 var textHiScore = document.querySelector('.userHiScore');
 var userIn = document.querySelector('.user');
 var recordHi = document.querySelector('#userHiScore');
+var tThree = document.querySelector('.artScore');
 const startBtn = document.querySelector('#start');
 const endBtn = document.querySelector('#end');
 
@@ -88,6 +89,9 @@ function endGame(){
     pHighScore.classList.remove('hide')
     textHiScore.classList.remove('hide')
     trivia.classList.add('hide')
+    pHighScore.classList.remove('hide')
+
+    sortHi()
 };
 
 // Start button
@@ -144,7 +148,15 @@ function endQuiz() {
 function sortHi() {
     hiScore.sort((a, b) => b.score - a.score)
 
-    recordHi.innerHTML = hiScore[0].name + "/" + hiScore[0].score;
+    hiScore.slice(3);
+    hiScore.forEach(element => {
+
+        const playaEl = document.createElement('article')
+        
+        playaEl.innerHTML = `${element.score} / ${element.name}`
+
+        tThree.appendChild(playaEl)
+    });
 };
 
 subBtn.addEventListener('click', () => {

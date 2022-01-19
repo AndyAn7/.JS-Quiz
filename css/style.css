@@ -13,7 +13,6 @@ body {
 /* Article position */
 article {
     text-align: center;
-    margin-left: 50px;
 }
 
 /* Header alignment */
@@ -59,8 +58,12 @@ button {
 .hiScore {
     text-align: center;
     margin-top: 25px;
+    font-size: 18px;
 }
 
+.artScore {
+    margin-top: 5px;
+}
 .userHiScore {
     text-align: center;
 }

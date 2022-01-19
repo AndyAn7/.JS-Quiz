@@ -55,23 +55,43 @@ button {
     margin: 5px;
 }
 
+/* High score styling */
 .hiScore {
     text-align: center;
     margin-top: 25px;
     font-size: 18px;
 }
 
+/* Top three scores styling */
 .artScore {
     margin-top: 5px;
 }
+
+/* User high score input styling */
 .userHiScore {
     text-align: center;
 }
 
+/* Start-end button styling */
 .startend {
     text-align: center;
 }
 
+/* Display jurisdiction */
 .hide {
     display: none;
+}
+
+@media screen and (max-width: 720px){
+    main {
+        width: 50%;
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin: auto;
+    }
+
+    hr {
+        display:none
+    }
 }

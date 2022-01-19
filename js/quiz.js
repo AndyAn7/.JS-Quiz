@@ -18,7 +18,7 @@ var tThree = document.querySelector('.artScore');
 const startBtn = document.querySelector('#start');
 const endBtn = document.querySelector('#end');
 
-
+// Index, score, timer variables
 var solutionIndex = 0;
 var questionNumber = 0;
 var score = 0;
@@ -94,7 +94,7 @@ function endGame(){
     sortHi()
 };
 
-// Start button
+// Start button and outline of gameStart
 startBtn.addEventListener('click',() => {
     questionNumber = 0
     sec = 60
@@ -128,7 +128,7 @@ button4.addEventListener('click', () => {
     checkSol(3);
 });
 
-
+// High score function + local storage of top 3 scores
 var hiScore = JSON.parse(localStorage.getItem('highScores')) || [];
 
 function endQuiz() {
@@ -159,7 +159,7 @@ function sortHi() {
     });
 };
 
+// Submission of user info for top score(s)
 subBtn.addEventListener('click', () => {
-    console.log('submit button')
     endQuiz()
 });

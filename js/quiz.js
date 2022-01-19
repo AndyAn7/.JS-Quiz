@@ -12,6 +12,8 @@ var subBtn = document.querySelector('.sub');
 var container = document.querySelector('.welcome');
 var pHighScore = document.querySelector('.hiScore');
 var textHiScore = document.querySelector('.userHiScore');
+var userIn = document.querySelector('.user');
+var recordHi = document.querySelector('#userHiScore');
 const startBtn = document.querySelector('#start');
 const endBtn = document.querySelector('#end');
 
@@ -35,7 +37,7 @@ function timerF() {
             clearInterval(timer);
         }
     }, 1000);
-}
+};
 
 // Questions display
 function displayTrivia(i) {
@@ -49,7 +51,7 @@ function displayTrivia(i) {
     button4.textContent = questions[i].choices[3];
 
     trivia.innerHTML = triviaNew;
-}
+};
 
 // Check solution chosen by user
 function checkSol(qns) {
@@ -72,7 +74,7 @@ function checkSol(qns) {
     }
     questionNumber++
     displayTrivia(questionNumber)
-}
+};
 
 // endGame function
 function endGame(){
@@ -86,7 +88,7 @@ function endGame(){
     pHighScore.classList.remove('hide')
     textHiScore.classList.remove('hide')
     trivia.classList.add('hide')
-}
+};
 
 // Start button
 startBtn.addEventListener('click',() => {
@@ -122,21 +124,30 @@ button4.addEventListener('click', () => {
     checkSol(3);
 });
 
-var hiScore = JSON.parse(localStorage.getItem('hiScore')) || [];
+
+var hiScore = JSON.parse(localStorage.getItem('highScores')) || [];
 
 function endQuiz() {
-    var plyrName = textHiScore.value
+    var plyrName = userIn.value;
     let plyrScoreObj = {
-        score: hiScore,
-        name: plyrName
+        score: score,
+        name: plyrName,
     }
 
     hiScore.push(plyrScoreObj)
-    hiScore.sort((a, b) => b.score - a.score)
-    localStorage.setItem('highScores', JSON.stringify(hiScore))
+    console.log(hiScore);
+    hiScore.sort((a, b) => b.score - a.score);
+    localStorage.setItem('highScores', JSON.stringify(hiScore));
     alert('Your name has been submitted!');
-}
+};
 
 function sortHi() {
-    hiScore
-}
+    hiScore.sort((a, b) => b.score - a.score)
+
+    recordHi.innerHTML = hiScore[0].name + "/" + hiScore[0].score;
+};
+
+subBtn.addEventListener('click', () => {
+    console.log('submit button')
+    endQuiz()
+});

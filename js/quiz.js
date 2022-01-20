@@ -52,6 +52,7 @@ function displayTrivia(i) {
     button4.textContent = questions[i].choices[3];
 
     trivia.innerHTML = triviaNew;
+
 };
 
 // Check solution chosen by user
@@ -141,14 +142,21 @@ function endQuiz() {
     hiScore.push(plyrScoreObj)
     console.log(hiScore);
     hiScore.sort((a, b) => b.score - a.score);
+    if ( hiScore.length >= 3) {
+
+        hiScore = hiScore.slice(0, 3);
+
+    }
     localStorage.setItem('highScores', JSON.stringify(hiScore));
     alert('Your name has been submitted!');
 };
 
 function sortHi() {
+     tThree.textContent = "";
+     console.log(tThree);
+
     hiScore.sort((a, b) => b.score - a.score)
 
-    hiScore.slice(3);
     hiScore.forEach(element => {
 
         const playaEl = document.createElement('article')
@@ -156,7 +164,9 @@ function sortHi() {
         playaEl.innerHTML = `${element.score} / ${element.name}`
 
         tThree.appendChild(playaEl)
+
     });
+    
 };
 
 // Submission of user info for top score(s)
